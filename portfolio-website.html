@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Previous head content remains the same until scripts -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amay Portfolio</title>
+    <!-- Add ScrollTrigger plugin alongside GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Rest of the previous styles remain the same -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0a192f;
+        color: #8892b0;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Header/Navigation */
+      header {
+        padding: 2rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: rgba(10, 25, 47, 0.9);
+        z-index: 100;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 2rem;
+        color: #64ffda;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: #ccd6f6;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #64ffda;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        color: #ccd6f6;
+        margin-bottom: 1rem;
+      }
+
+      .hero-content h2 {
+        font-size: 3rem;
+        color: #8892b0;
+        margin-bottom: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+
+      /* About Section */
+      .about {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        color: #ccd6f6;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        list-style: none;
+      }
+
+      .skills-list li::before {
+        content: "▹";
+        color: #64ffda;
+        margin-right: 0.5rem;
+      }
+
+      /* Projects Section */
+      .projects {
+        padding: 100px 0;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background-color: #112240;
+        padding: 2rem;
+        border-radius: 4px;
+        transition: transform 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .project-card h3 {
+        color: #ccd6f6;
+        margin-bottom: 1rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-size: 3rem;
+        color: #ccd6f6;
+        margin-bottom: 2rem;
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .social-links a {
+        color: #8892b0;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #64ffda;
+      }
+
+      /* Button Styles */
+      .btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: transparent;
+        border: 1px solid #64ffda;
+        color: #64ffda;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background-color: rgba(100, 255, 218, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+
+        .hero-content h2 {
+          font-size: 2rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">JD</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Hi, I'm Amay Korade</h1>
+            <h2>Full Stack Developer</h2>
+            <p>
+              I build exceptional digital experiences that make the web a better
+              place. Focused on creating innovative solutions that combine
+              beautiful design with efficient functionality.
+            </p>
+            <a href="#contact" class="btn">Get In Touch</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title">About Me</h2>
+          <div class="about-content">
+            <div>
+              <p>
+                Hello! I'm a passionate developer with a keen interest in
+                building digital solutions that solve real-world problems. With
+                over 1.5 years of experience in web development, I specialize in
+                creating responsive and user-friendly applications.
+              </p>
+              <p>
+                Here are a few technologies I've been working with recently:
+              </p>
+              <ul class="skills-list">
+                <li>JavaScript (ES6+)</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>TypeScript</li>
+                <li>Redux-toolkit</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+            <div>
+              <img
+                src="./cover photo.jpg"
+                alt="Profile"
+                style="width: 100%; border-radius: 4px"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <div class="container">
+          <h2 class="section-title">Some Things I've Built</h2>
+          <div class="project-grid">
+            <div class="project-card">
+              <h3>Ecommerce application</h3>
+              <p>
+                The Ecommerce application is a comprehensive web platform
+                developed using React and Node.js. It enables users to
+                efficiently manage their shopping experience while providing
+                essential features for both customers and administrators.
+              </p>
+            </div>
+            <div class="project-card">
+              <h3>Company Listing</h3>
+              <p>
+                Currently, I am enhancing the platform by adding new
+                functionalities: Bulk Application Feature: Users will be able to
+                apply to multiple companies with a single click, streamlining
+                the application process. Personalized Recommendations: The
+                platform will include features that help users identify which
+                companies align best with their skills and preferences. This
+                project aims to simplify the job application process while
+                providing valuable insights into potential employers.
+              </p>
+            </div>
+            <!-- <div class="project-card">
+              <h3>Project Three</h3>
+              <p>
+                A real-time chat application built with Socket.io and React,
+                featuring end-to-end encryption.
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2>Get In Touch</h2>
+          <p>
+            I'm currently looking for new opportunities. Whether you have a
+            question or just want to say hi, I'll try my best to get back to
+            you!
+          </p>
+          <a href="mailto:amaykorade5@gmail.com" class="btn">Say Hello</a>
+          <div class="social-links">
+            <a
+              href="https://github.com/amaykorade?tab=repositories"
+              target="_blank"
+              >GitHub</a
+            >
+            <a href="https://www.linkedin.com/in/amay-korade/" target="_blank"
+              >LinkedIn</a
+            >
+            <a href="https://x.com/KoradeAmay" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // GSAP Animations
+      gsap.from(".hero-content", {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        delay: 0.5,
+      });
+
+      // Project cards animation
+      gsap.from(".project-card", {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: ".project-grid",
+          start: "top center",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // About section animation
+      gsap.from(".about-content", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".about",
+          start: "top center",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Contact section animation
+      gsap.from(".contact", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".contact",
+          start: "top center",
+          toggleActions: "play none none reverse",
+        },
+      });
+    </script>
+  </body>
+</html>
